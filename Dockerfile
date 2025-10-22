@@ -22,20 +22,13 @@ WORKDIR /app
 
 # Bağımlılık cache'i
 COPY pom.xml .
-RUN mvn -q -DskipTests dependency:go-offline
+RUN mvn clean package -Dmaven.test.skip=true
 
 # Kod
-COPY src ./src
+FROM openjdk
+WORKDIR /app
 
 # Derleme
 RUN mvn clean package -DskipTests
-
-# ---- Run stage ----
-FROM eclipse-temurin:17-jre-jammy
-WORKDIR /app
-
-# Jar'ı kopyala (gerekirse *.jar yerine tam ad yaz)
-COPY --from=build /app/target/*.jar /app/app.jar
-
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app/app.jar"]
