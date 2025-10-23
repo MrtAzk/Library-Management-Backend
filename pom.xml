@@ -116,7 +116,7 @@
 
 
 
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -150,7 +150,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency> -->
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql 
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
@@ -172,13 +172,13 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.0.2</version>
 		</dependency>
-		<!-- mapstruct -->
+		 mapstruct 
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${org.mapstruct.version}</version>
 		</dependency>
-		<!-- mapstruct -->
+		 mapstruct 
 
 	</dependencies>
 
@@ -222,12 +222,126 @@
 							-Amapstruct.defaultComponentModel=spring
 						</arg>
 					</compilerArgs>
-					<source>${java.version}</source> <!-- depending on your project -->
-					<target>${java.version}</target> <!-- depending on your project -->
+					<source>${java.version}</source> <!-- depending on your project -
+					<target>${java.version}</target> <!-- depending on your project -
 				</configuration>
 			</plugin>
 
 		</plugins>
 	</build>
 
-</project>
+</project> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+>  <modelVersion>4.0.0</modelVersio
+n>  <pare
+nt>    <groupId>org.springframework.boot</gro
+upId>    <artifactId>spring-boot-starter-parent</arti
+factId>    <version>3.2.1<
+/version>    <rel
+ativePath/
+>  </parent>  <groupId>com.alisim
+sek</groupId>  <artifactId>LibraryManagementProjec
+t</artifactId>  <version>0.0.1-SNA
+PSHOT</version>  <name>LibraryManageme
+ntProject</name>  <description>Demo project for Spring B
+oot</descript
+ion>  <properties>    <java.versi
+on>17</java.version>    <org.mapstruct.version>1.5.5.Final</
+org.mapstruct.
+version>  </pro
+perties>  <dep
+endencies>    <dependency>      <groupId>org.s
+pringframework.boot</groupId>      <artifactId>spring-bo
+ot-starter-data
+-jpa</artifact
+Id>    </dependency>    <dependency>      <gro
+upId>org.springframework.boot</groupId>      <artif
+actId>spring-bo
+ot-starter-web
+</artifactId>    </dependency>    <d
+ependency>      <groupId>org.postgresq
+l</groupId>      <artifactId
+>postgresql</ar
+tifactId>     
+ <version>42.7.3</version>    </depende
+ncy>    <dependency>      <groupId
+>org.projectlombok</groupId>
+      <artifact
+Id>lombok</art
+ifactId>      <optional>true</optional>    </d
+ependency>    <dependency>      <groupId>org.springf
+ramework.boot</groupId
+>      <artifac
+tId>spring-boo
+t-starter-test</artifactId>      <s
+cope>test</scope>    </dependency>    <dependency>      <groupI
+d>org.springdoc</groupId>  
+    <artifactId
+>springdoc-ope
+napi-starter-webmvc-ui</artifactId>
+      <version>2.0.2</version>    </d
+ependency>    <dependency>      <groupId>org.m
+apstruct</group
+Id>      <artifa
+ctId>map
+struct</art
+ifactId>   
+   <version>${org.mapstruct.version}</version> 
+   </dependency>  </dependencies>  <build>    <plugin
+s>      <plugin>   
+     <groupId>org.springframework.boot</group
+Id>        <artifact
+Id>spring-bo
+ot-maven-pl
+ugin</artifactId>        <configuration>       
+   <excludeDevtools>false</excludeDevtools>       
+ </configuration>      </plug
+in>      <plugin>  
+      <groupId>org.apach
+e.maven.plugins</groupId
+>        <artifactId>maven-comp
+iler-plugin<
+/artifactId>        <version>3.11.0</versio
+n>        <configuration>          <so
+urce>17</source>          <target>17</targe
+t>          <
+annotationPr
+ocessorPaths>            <path>        
+      <groupId>org.projectlombok</groupId>         
+     <artifactId>lombok</artifactId>              
+<version>${lo
+mbok.version}</version>         
+   </path>         
+   <path>              <groupId>org.mapstruct</groupId>     
+         <artifactId>mapstruct-processor</artifactId>              <v
+ersion>${org.mapstruct.version}</version>            </pa
+th>          </annot
+ationProcessorPaths>
+          <c
+ompilerArgs>
+         
+   <arg>-A
+mapstruct.suppressGeneratorTimestamp=true</arg>            <arg>-Amapstruct.suppressGeneratorVersionInfoComment=true</arg>            <arg>-Amapstruct.defaultComponentModel=spring</arg>          </compilerArgs>        </configuration>      </plugin>    </plugins>  </build></project>
