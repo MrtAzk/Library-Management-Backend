@@ -1,34 +1,21 @@
-# FROM maven AS build
-
-# WORKDIR /app
-
-# COPY ./pom.xml /app
-# COPY ./src /app/src
-
-# RUN mvn clean package -Dmaven.test.skip=true
-
-# FROM openjdk
-
-# WORKDIR /app
-
-# COPY --from=build /app/target/*.jar app.jar
-
-# EXPOSE 8080
-
-# CMD ["java", "-jar", "app.jar"]
-# ---- Build stage ----
+# 1. Aşama: Maven ile Derleme
+# Projeyi derlemek için JDK ve Maven içeren bir imaj kullanıyoruz.
 FROM maven:3.8.8-eclipse-temurin-17 AS build
 WORKDIR /app
-
-# Bağımlılık cache'i
-COPY pom.xml .
+COPY . .
 RUN mvn clean package -Dmaven.test.skip=true
 
-# Kod
-FROM openjdk
+# 2. Aşama: Çalıştırma
+# Sadece çalışmak için gereken hafif JRE imajını kullanıyoruz.
+FROM eclipse-temurin:17-jre-focal
 WORKDIR /app
 
-# Derleme
-RUN mvn clean package -DskipTests
-COPY --from=build /app/target/*.jar app.jar
+# Derlenen JAR dosyasını, 'build' aşamasından kopyalıyoruz.
+# JAR dosyasının adını target klasörünüzdeki dosyaya göre kontrol ettim:
+COPY --from=build /app/target/LibraryManagementProject-0.0.1-SNAPSHOT.jar app.jar
+
+# Uygulama portu
 EXPOSE 8080
+
+# Çalıştırma komutu
+CMD ["java", "-jar", "app.jar"]
